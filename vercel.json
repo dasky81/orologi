@@ -1,0 +1,45 @@
+{
+  "functions": {
+    "api/analyze.js": {
+      "maxDuration": 15
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/valutazione",
+      "destination": "/valutazione.html"
+    },
+    {
+      "source": "/market",
+      "destination": "/market.html"
+    },
+    {
+      "source": "/guida-autenticita",
+      "destination": "/guida-autenticita.html"
+    },
+    {
+      "source": "/pricing",
+      "destination": "/pricing.html"
+    },
+    {
+      "source": "/contatti",
+      "destination": "/contatti.html"
+    },
+    {
+      "source": "/help",
+      "destination": "/help.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
+    },
+    {
+      "source": "/cookie",
+      "destination": "/cookie.html"
+    },
+    {
+      "source": "/termini",
+      "destination": "/termini.html"
+    }
+  ]
+}

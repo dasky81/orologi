@@ -1,0 +1,60 @@
+:root { color-scheme: light; }
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+/* Skip link */
+.skip-link { position:absolute; left:-9999px; top:10px; }
+.skip-link:focus { left:10px; z-index:9999; background:#fff; padding:10px 12px; border-radius:12px; border:1px solid #e5e5e5; box-shadow:0 8px 20px rgba(0,0,0,.12); }
+
+/* Hide scrollbars (horizontal bars) */
+.hide-scroll::-webkit-scrollbar { display:none; }
+.hide-scroll { -ms-overflow-style:none; scrollbar-width:none; }
+
+/* Chat scroll */
+.chat-scroll::-webkit-scrollbar { width: 6px; }
+.chat-scroll::-webkit-scrollbar-thumb { background:#e5e5e5; border-radius:999px; }
+
+/* Line clamp fallback */
+.line-clamp-2 {
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+/* Typing dots (no Tailwind delays) */
+.dot { width:6px; height:6px; border-radius:999px; background:#9ca3af; animation: dotBounce 1.1s infinite ease-in-out; }
+.dot.d2 { animation-delay:.12s; }
+.dot.d3 { animation-delay:.24s; }
+@keyframes dotBounce { 0%,80%,100%{ transform:translateY(0); opacity:.6 } 40%{ transform:translateY(-6px); opacity:1 } }
+
+/* Logo animation */
+.logo-float { animation: logoFloat 4.2s ease-in-out infinite; filter: drop-shadow(0 6px 10px rgba(0,0,0,0.12)); }
+.logo-minute { transform-origin:16px 16px; animation: minuteSpin 8s linear infinite; }
+.logo-hour { transform-origin:16px 16px; animation: hourSpin 40s linear infinite; }
+.logo-text { position:relative; }
+.logo-text::after {
+  content:"";
+  position:absolute;
+  left:-10%; top:0;
+  width:35%; height:100%;
+  background:linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%);
+  transform:skewX(-18deg) translateX(-140%);
+  animation:logoShine 3.6s ease-in-out infinite;
+  pointer-events:none;
+  opacity:.55;
+  mix-blend-mode:screen;
+}
+@keyframes logoFloat { 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-2px) } }
+@keyframes minuteSpin { from{ transform:rotate(0deg) } to{ transform:rotate(360deg) } }
+@keyframes hourSpin { from{ transform:rotate(0deg) } to{ transform:rotate(360deg) } }
+@keyframes logoShine { 0%{ transform:skewX(-18deg) translateX(-140%) } 55%{ transform:skewX(-18deg) translateX(260%) } 100%{ transform:skewX(-18deg) translateX(260%) } }
+
+/* Focus ring */
+:focus-visible { outline: 2px solid #222222; outline-offset: 2px; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior:auto; }
+  .logo-float, .logo-minute, .logo-hour, .logo-text::after { animation:none !important; }
+}

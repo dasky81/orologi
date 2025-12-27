@@ -17,8 +17,6 @@ module.exports = async (req, res) => {
 
   const model = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 
-  // Vercel parses JSON body automatically for application/json,
-  // but we keep a defensive fallback.
   let body = req.body;
   if (typeof body === 'string') {
     try { body = JSON.parse(body); } catch (_) { body = {}; }
@@ -38,7 +36,7 @@ module.exports = async (req, res) => {
     const mimeType = m?.[1] || 'image/jpeg';
     const b64 = m?.[2] || String(image);
 
-    // ~ 14M chars base64 cap (roughly ~10MB raw)
+    // Safety cap (rough)
     if (b64.length > 14_000_000) {
       return res.status(413).json({ error: 'Image too large. Please upload a smaller/compressed image.' });
     }
@@ -50,9 +48,10 @@ module.exports = async (req, res) => {
     parts: [{
       text:
         "Sei un analista esperto di orologeria di lusso (mercato secondario, vintage, autenticità visiva). " +
-        "Rispondi in italiano, in modo chiaro e operativo. " +
-        "Se c'è una foto: fai un pre-screening (non dare certezze assolute), elenca segnali da verificare, e stima un range. " +
-        "Se manca la referenza: chiedi i dati minimi (brand, ref, anno, condizioni, full set, service)."
+        "Rispondi in italiano, tono professionale e operativo. " +
+        "Se c'è una foto: fai un pre-screening (non dare certezze assolute), elenca segnali da verificare e rischi, e stima un range. " +
+        "Se manca la referenza: chiedi i dati minimi (brand, ref, anno, condizioni, full set, service). " +
+        "Formato: prima un riassunto (2-3 righe), poi bullet di check, poi range prezzo, poi prossimi step."
     }]
   };
 
@@ -64,7 +63,7 @@ module.exports = async (req, res) => {
   const payload = {
     systemInstruction,
     contents: [{ role: 'user', parts }],
-    generationConfig: { temperature: 0.3, maxOutputTokens: 900 }
+    generationConfig: { temperature: 0.25, maxOutputTokens: 900 }
   };
 
   const url =

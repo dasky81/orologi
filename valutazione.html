@@ -4,24 +4,24 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#ffffff" />
-  <title>Orologi.news | Il Mercato del Lusso</title>
-  <meta name="description" content="Piattaforma di analisi, quotazioni e autenticità per l'orologeria di alta gamma: prezzi reali, trend, valutazioni e insight." />
+  <title>Valutazione Orologi | Orologi.news</title>
+  <meta name="description" content="Valuta un orologio di lusso: range di mercato, checklist autenticità, next step operativi." />
   <meta name="robots" content="index,follow" />
 
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/assets/icon-180.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <link rel="canonical" href="https://orologi.news/" />
+  <link rel="canonical" href="https://orologi.news/valutazione" />
 
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="it_IT" />
-  <meta property="og:title" content="Orologi.news | Il Mercato del Lusso" />
-  <meta property="og:description" content="Piattaforma di analisi, quotazioni e autenticità per l'orologeria di alta gamma: prezzi reali, trend, valutazioni e insight." />
+  <meta property="og:title" content="Valutazione Orologi | Orologi.news" />
+  <meta property="og:description" content="Valuta un orologio di lusso: range di mercato, checklist autenticità, next step operativi." />
   <meta property="og:image" content="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?q=80&w=1600&auto=format&fit=crop" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Orologi.news | Il Mercato del Lusso" />
-  <meta name="twitter:description" content="Piattaforma di analisi, quotazioni e autenticità per l'orologeria di alta gamma: prezzi reali, trend, valutazioni e insight." />
+  <meta name="twitter:title" content="Valutazione Orologi | Orologi.news" />
+  <meta name="twitter:description" content="Valuta un orologio di lusso: range di mercato, checklist autenticità, next step operativi." />
   <meta name="twitter:image" content="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?q=80&w=1600&auto=format&fit=crop" />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -149,64 +149,174 @@
 
 <main id="main" class="max-w-[1200px] mx-auto px-4 sm:px-6 pt-10">
 
-<section class="relative overflow-hidden rounded-3xl border border-gray-200 bg-dark text-white">
-  <div class="absolute inset-0">
-    <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?q=80&w=1800&auto=format&fit=crop" alt="Orologio di lusso in macro" class="w-full h-full object-cover opacity-40" loading="eager" decoding="async">
-    <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-black/10"></div>
-  </div>
-  <div class="relative p-7 sm:p-10 md:p-12 max-w-2xl">
-    <p class="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-white/80">
-      <span class="px-2 py-1 rounded-full bg-white/10 border border-white/15">Market Intelligence</span>
-      <span class="px-2 py-1 rounded-full bg-white/10 border border-white/15">Autenticità visiva</span>
-    </p>
-    <h1 class="mt-4 text-3xl sm:text-5xl font-extrabold tracking-tight">Decodifica il valore del tempo.</h1>
-    <p class="mt-4 text-base sm:text-lg text-white/90">Quotazioni, trend e screening visivo da foto: output chiari e next step concreti.</p>
-    <div class="mt-7 flex flex-col sm:flex-row gap-3">
-      <a href="/valutazione" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white text-dark font-extrabold hover:shadow-lg transition">
-        <i data-lucide="sparkles" class="w-5 h-5" aria-hidden="true"></i> Avvia una valutazione
-      </a>
-      <a href="/guida-autenticita" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white/10 border border-white/20 text-white font-bold hover:bg-white/15 transition">
-        <i data-lucide="shield" class="w-5 h-5" aria-hidden="true"></i> Guida autenticità
-      </a>
+<section class="flex flex-col lg:flex-row gap-8">
+  <div class="lg:w-[55%]">
+    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Valutazione & Autenticità</h1>
+    <p class="mt-3 text-medium">Compila i KPI minimi (brand, ref, anno, condizioni), carica una foto e ottieni un output operativo.</p>
+
+    <div class="mt-6 rounded-3xl border border-gray-200 bg-white shadow-card overflow-hidden">
+      <div class="p-6 sm:p-8 border-b border-gray-100">
+        <h2 class="text-lg font-extrabold">Dati dell’orologio</h2>
+        <p class="mt-1 text-sm text-medium">Più dettagli = range più stretto.</p>
+      </div>
+      <div class="p-6 sm:p-8">
+        <form id="evalForm" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-sm font-bold text-dark">Brand</label>
+            <input id="brand" class="mt-1 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm focus:bg-white focus:border-dark focus:ring-1 focus:ring-dark" placeholder="Es. Rolex" />
+          </div>
+          <div>
+            <label class="text-sm font-bold text-dark">Referenza</label>
+            <input id="ref" class="mt-1 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm focus:bg-white focus:border-dark focus:ring-1 focus:ring-dark" placeholder="Es. 116500LN" />
+          </div>
+          <div>
+            <label class="text-sm font-bold text-dark">Anno</label>
+            <input id="yearField" class="mt-1 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm focus:bg-white focus:border-dark focus:ring-1 focus:ring-dark" placeholder="Es. 2019" inputmode="numeric" />
+          </div>
+          <div>
+            <label class="text-sm font-bold text-dark">Condizioni</label>
+            <select id="cond" class="mt-1 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm focus:bg-white focus:border-dark focus:ring-1 focus:ring-dark">
+              <option>Nuovo / pari al nuovo</option>
+              <option>Ottime</option>
+              <option>Buone</option>
+              <option>Da rivedere / segni importanti</option>
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="text-sm font-bold text-dark">Full set & note</label>
+            <textarea id="notes" rows="3" class="mt-1 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm focus:bg-white focus:border-dark focus:ring-1 focus:ring-dark" placeholder="Box/papers? Service? Provenienza?"></textarea>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label class="text-sm font-bold text-dark">Foto (opzionale)</label>
+            <div class="mt-1 flex items-center justify-between gap-3 rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3">
+              <div class="text-sm text-medium">Carica 1 foto (frontale) oppure 2 (frontale + rehaut/macro).</div>
+              <button id="evalUpload" type="button" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-gray-200 font-bold hover:shadow-md transition">
+                <i data-lucide="camera" class="w-4 h-4" aria-hidden="true"></i> Carica
+              </button>
+            </div>
+            <input type="file" id="evalImage" accept="image/*" class="hidden" />
+            <div id="evalPreview" class="mt-3 hidden">
+              <img id="evalPreviewImg" class="w-full max-h-[320px] object-cover rounded-2xl border border-gray-200" alt="Anteprima foto" />
+            </div>
+          </div>
+
+          <div class="sm:col-span-2 flex flex-col sm:flex-row gap-3 mt-2">
+            <button id="evalBtn" type="submit" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-dark text-white font-extrabold hover:opacity-90 transition">
+              <i data-lucide="sparkles" class="w-5 h-5" aria-hidden="true"></i> Genera analisi
+            </button>
+            <button data-open-concierge type="button" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl border border-gray-300 bg-white font-bold hover:shadow-md transition">
+              <i data-lucide="message-circle" class="w-5 h-5" aria-hidden="true"></i> Usa la chat
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="mt-6 text-xs text-white/80">*Stime indicative: condizioni, full set, service e timing fanno la differenza.*</div>
+    <p class="mt-4 text-xs text-medium">Stime indicative. Per autenticità al 100% servono controlli fisici e documentazione.</p>
+  </div>
+
+  <div class="lg:w-[45%]">
+    <div class="rounded-3xl border border-gray-200 bg-white shadow-card overflow-hidden">
+      <div class="p-6 sm:p-8 border-b border-gray-100 flex items-center justify-between">
+        <div><div class="text-[10px] font-extrabold uppercase tracking-wider text-medium">Output</div><h2 class="text-lg font-extrabold">Risultato analisi</h2></div>
+        <span class="text-xs text-medium inline-flex items-center gap-1"><i data-lucide="shield-check" class="w-3 h-3" aria-hidden="true"></i> Server-side</span>
+      </div>
+      <div class="p-6 sm:p-8">
+        <div id="evalResult" class="prose prose-sm max-w-none text-dark"><p class="text-medium">Compila e invia il form: riceverai checklist, range e next step.</p></div>
+      </div>
+    </div>
+    <div class="mt-6 rounded-3xl border border-gray-200 bg-gray-50 p-6 sm:p-8">
+      <h3 class="font-extrabold">Suggerimenti foto</h3>
+      <ul class="mt-3 space-y-2 text-sm text-medium">
+        <li>• Frontale perfetta (senza inclinazione)</li>
+        <li>• Macro su logo e scritte</li>
+        <li>• Rehaut/serial (se visibile)</li>
+        <li>• Chiusura e bracciale</li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<section class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-  <div class="p-6 rounded-2xl border border-gray-200 shadow-card bg-white">
-    <div class="w-10 h-10 rounded-xl bg-light flex items-center justify-center mb-4"><i data-lucide="line-chart" class="w-5 h-5 text-dark" aria-hidden="true"></i></div>
-    <h2 class="font-extrabold text-lg">Trend & Range</h2>
-    <p class="mt-2 text-medium text-sm">Range di mercato con contesto: domanda, offerta, liquidità, rischio “hype”.</p>
-  </div>
-  <div class="p-6 rounded-2xl border border-gray-200 shadow-card bg-white">
-    <div class="w-10 h-10 rounded-xl bg-light flex items-center justify-center mb-4"><i data-lucide="scan-search" class="w-5 h-5 text-dark" aria-hidden="true"></i></div>
-    <h2 class="font-extrabold text-lg">Pre-screening foto</h2>
-    <p class="mt-2 text-medium text-sm">Checklist visiva: tipografia, indici, rehaut, incisioni, coerenza componenti.</p>
-  </div>
-  <div class="p-6 rounded-2xl border border-gray-200 shadow-card bg-white">
-    <div class="w-10 h-10 rounded-xl bg-light flex items-center justify-center mb-4"><i data-lucide="clipboard-check" class="w-5 h-5 text-dark" aria-hidden="true"></i></div>
-    <h2 class="font-extrabold text-lg">Next step</h2>
-    <p class="mt-2 text-medium text-sm">Azioni consigliate: macro richieste, documenti, service, canali di vendita.</p>
-  </div>
-</section>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('evalForm');
+    if (!form) return;
 
-<section class="mt-12 rounded-3xl border border-gray-200 bg-white overflow-hidden">
-  <div class="p-6 sm:p-8 flex items-start justify-between gap-6 flex-col md:flex-row">
-    <div class="max-w-xl">
-      <h2 class="text-2xl font-extrabold">Operatività: in 60 secondi</h2>
-      <p class="mt-2 text-medium">Inserisci marca e referenza, carica una foto e ottieni una risposta strutturata.</p>
-    </div>
-    <div class="w-full md:w-auto">
-      <a href="/valutazione" class="w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-dark text-white font-extrabold hover:opacity-90 transition">
-        <i data-lucide="sparkles" class="w-5 h-5" aria-hidden="true"></i> Vai alla valutazione
-      </a>
-      <button data-open-concierge class="mt-3 w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl border border-gray-300 bg-white font-bold hover:shadow-md transition">
-        <i data-lucide="message-circle" class="w-5 h-5" aria-hidden="true"></i> Chiedi al Concierge
-      </button>
-    </div>
-  </div>
-</section>
+    const upload = document.getElementById('evalUpload');
+    const imgInput = document.getElementById('evalImage');
+    const previewWrap = document.getElementById('evalPreview');
+    const previewImg = document.getElementById('evalPreviewImg');
+    const result = document.getElementById('evalResult');
+    let imageDataUrl = null;
+
+    upload.addEventListener('click', () => imgInput.click());
+
+    async function compress(file, maxDim=1280, quality=0.85){
+      const bitmap = await (window.createImageBitmap ? createImageBitmap(file) : new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+        const r = new FileReader();
+        r.onload = () => { img.src = r.result; };
+        r.onerror = reject;
+        r.readAsDataURL(file);
+      }));
+      const w = bitmap.width || bitmap.naturalWidth;
+      const h = bitmap.height || bitmap.naturalHeight;
+      const scale = Math.min(1, maxDim / Math.max(w, h));
+      const outW = Math.max(1, Math.round(w * scale));
+      const outH = Math.max(1, Math.round(h * scale));
+      const canvas = document.createElement('canvas');
+      canvas.width = outW; canvas.height = outH;
+      const ctx = canvas.getContext('2d', { alpha:false });
+      ctx.drawImage(bitmap, 0, 0, outW, outH);
+      return canvas.toDataURL('image/jpeg', quality);
+    }
+
+    imgInput.addEventListener('change', async (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      imageDataUrl = await compress(file);
+      previewImg.src = imageDataUrl;
+      previewWrap.classList.remove('hidden');
+      e.target.value = '';
+    });
+
+    async function callApi(text, image){
+      const res = await fetch('/api/analyze', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ text, image }) });
+      if(!res.ok){ let p={}; try{p=await res.json()}catch(_){}
+        throw new Error(p?.error || 'Errore API'); }
+      const data = await res.json();
+      return data.result;
+    }
+
+    function mdToHtml(md){
+      const raw = window.marked ? marked.parse(md) : md;
+      return window.DOMPurify ? DOMPurify.sanitize(raw, { USE_PROFILES: { html:true } }) : raw;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const brand = document.getElementById('brand').value.trim();
+      const ref = document.getElementById('ref').value.trim();
+      const year = document.getElementById('yearField').value.trim();
+      const cond = document.getElementById('cond').value.trim();
+      const notes = document.getElementById('notes').value.trim();
+
+      const prompt = `Valutazione orologio.\n\nBrand: ${brand || '(non indicato)'}\nReferenza: ${ref || '(non indicata)'}\nAnno: ${year || '(non indicato)'}\nCondizioni: ${cond || '(non indicato)'}\nNote: ${notes || '(nessuna)'}\n\nObiettivo: pre-screening autenticità (se foto), range di mercato e next step.`;
+
+      result.innerHTML = '<p class="text-medium">Sto generando l’analisi…</p>';
+
+      try{
+        const out = await callApi(prompt, imageDataUrl);
+        result.innerHTML = mdToHtml(out);
+        try { window.lucide?.createIcons(); } catch (_) {}
+      }catch(_){
+        result.innerHTML = '<p class="text-medium">Errore: verifica <b>GEMINI_API_KEY</b> su Vercel e riprova.</p>';
+      }
+    });
+  });
+</script>
 
 </main>
 
