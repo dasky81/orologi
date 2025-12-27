@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <title>Orologi.news | Il Mercato del Lusso</title>
+  <meta name="description" content="Piattaforma di analisi, quotazioni e autenticità per l'orologeria di alta gamma: prezzi reali, trend, valutazioni e insight." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="it_IT" />
+  <meta property="og:title" content="Orologi.news | Il Mercato del Lusso" />
+  <meta property="og:description" content="Analisi, quotazioni e trend per orologi di alta gamma. Concierge digitale per stime e autenticità." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?q=80&w=1600&auto=format&fit=crop" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Orologi.news | Il Mercato del Lusso" />
+  <meta name="twitter:description" content="Analisi, quotazioni e trend per orologi di alta gamma." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?q=80&w=1600&auto=format&fit=crop" />
+
+  <link rel="canonical" href="https://orologi.news/" />
+
+  <!-- Preload hero image (riduce LCP) -->
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?q=80&w=1600&auto=format&fit=crop"
+    imagesrcset="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?q=80&w=1200&auto=format&fit=crop 1200w, https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?q=80&w=1600&auto=format&fit=crop 1600w, https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?q=80&w=2000&auto=format&fit=crop 2000w"
+    imagesizes="100vw" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts: Manrope (Clean & Modern) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Icons & Markdown (defer) -->
+  <script defer src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
+  <!-- Sanitizer: evita XSS quando renderizzi markdown -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#FF385C',
+            dark: '#222222',
+            medium: '#717171',
+            light: '#F7F7F7',
+            surface: '#FFFFFF',
+            success: '#008a05',
+          },
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif'],
+          },
+          boxShadow: {
+            floating: '0 6px 16px rgba(0,0,0,0.08)',
+            card: '0 0 0 1px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.04)',
+            hover: '0 0 0 1px rgba(0,0,0,0.04), 0 6px 12px rgba(0,0,0,0.08)',
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-out forwards',
+          },
+          keyframes: {
+            fadeIn: { from: { opacity: 0, transform: 'translateY(10px)' }, to: { opacity: 1, transform: 'translateY(0)' } }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root { color-scheme: light; }
+    body { background-color: #ffffff; color: #222222; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+    /* Utility */
+    .hide-scroll::-webkit-scrollbar { display: none; }
+    .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+    .chat-scroll::-webkit-scrollbar { width: 6px; }
+    .chat-scroll::-webkit-scrollbar-thumb { background: #e5e5e5; border-radius: 999px; }
+
+    /* Line clamp fallback (anche senza plugin Tailwind) */
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Skip link */
+    .skip-link { position: absolute; left: -9999px; top: 10px; }
+    .skip-link:focus { left: 10px; z-index: 9999; background: #fff; padding: 10px 12px; border-radius: 12px; border: 1px solid #e5e5e5; box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+
+    /* Typing dots (senza classi delay Tailwind) */
+    .dot { width: 6px; height: 6px; border-radius: 999px; background: #9ca3af; animation: dotBounce 1.1s infinite ease-in-out; }
+    .dot.d2 { animation-delay: .12s; }
+    .dot.d3 { animation-delay: .24s; }
+    @keyframes dotBounce { 0%, 80%, 100% { transform: translateY(0); opacity: .6; } 40% { transform: translateY(-6px); opacity: 1; } }
+
+    /* Micro shimmer (optional) */
+    .shimmer {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.35) 50%, transparent 100%);
+      animation: shimmer 2.1s infinite;
+      pointer-events: none;
+    }
+    @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
+    /* Logo animation */
+    .logo-float { animation: logoFloat 4.2s ease-in-out infinite; filter: drop-shadow(0 6px 10px rgba(0,0,0,0.12)); }
+    .logo-hands { transform-origin: 16px 16px; }
+    .logo-minute { transform-origin: 16px 16px; animation: minuteSpin 8s linear infinite; }
+    .logo-hour { transform-origin: 16px 16px; animation: hourSpin 40s linear infinite; }
+    .logo-text { position: relative; }
+    .logo-text::after {
+      content: "";
+      position: absolute;
+      left: -10%; top: 0;
+      width: 35%; height: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%);
+      transform: skewX(-18deg) translateX(-140%);
+      animation: logoShine 3.6s ease-in-out infinite;
+      pointer-events: none;
+      opacity: 0.55;
+      mix-blend-mode: screen;
+    }
+
+    @keyframes logoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+    @keyframes minuteSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes hourSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes logoShine { 0% { transform: skewX(-18deg) translateX(-140%); } 55% { transform: skewX(-18deg) translateX(260%); } 100% { transform: skewX(-18deg) translateX(260%); } }
+  </style>
+
+  <!-- Structured data (SEO) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Orologi.news",
+      "url": "https://orologi.news/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://orologi.news/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+</head>
+
+<body class="flex flex-col min-h-screen font-sans">
+
+  <a class="skip-link" href="#main">Salta al contenuto</a>
+
+  <!-- NAVBAR -->
+  <header class="fixed top-0 w-full bg-surface z-50 border-b border-gray-200 h-20 shadow-sm" role="banner">
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 w-full flex items-center justify-between h-full">
+
+      <!-- Brand -->
+      <a class="flex items-center gap-2 flex-shrink-0 group" href="#" aria-label="Home Orologi.news" onclick="window.location.reload(); return false;">
+        <!-- Animated Logo -->
+        <svg class="h-8 w-8 text-brand logo-float" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Ring -->
+          <circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2" opacity="0.95" />
+          <!-- Ticks -->
+          <g opacity="0.7" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="16" y1="3.5" x2="16" y2="6" />
+            <line x1="16" y1="26" x2="16" y2="28.5" />
+            <line x1="3.5" y1="16" x2="6" y2="16" />
+            <line x1="26" y1="16" x2="28.5" y2="16" />
+          </g>
+          <!-- Hands (animated) -->
+          <g class="logo-hands" stroke="currentColor" stroke-linecap="round">
+            <line x1="16" y1="16" x2="16" y2="8" stroke-width="2.2" class="logo-minute" />
+            <line x1="16" y1="16" x2="11.5" y2="16" stroke-width="2.6" class="logo-hour" />
+          </g>
+          <circle cx="16" cy="16" r="1.6" fill="currentColor" />
+        </svg>
+
+        <span class="font-extrabold text-xl text-brand hidden md:block tracking-tight relative">
+          <span class="inline-block logo-text">Orologi.news</span>
+        </span>
+      </a>
+
+      <!-- Search Bar (desktop) -->
+      <button type="button" class="hidden md:flex items-center border border-gray-300 rounded-full shadow-sm hover:shadow-md transition cursor-pointer py-2 px-2 pl-6 gap-2 divide-x divide-gray-300 bg-white" aria-label="Apri ricerca">
+        <div class="text-sm font-semibold pr-2">Trova Orologio</div>
+        <div class="text-sm font-semibold px-4">Qualsiasi Brand</div>
+        <div class="text-sm text-medium px-4 font-normal">Aggiungi filtri</div>
+        <div class="bg-brand p-2.5 rounded-full text-white" aria-hidden="true"><i data-lucide="search" class="w-4 h-4 stroke-[3px]"></i></div>
+      </button>
+
+      <!-- Search Bar (mobile) -->
+      <button type="button" class="md:hidden flex items-center gap-2 border border-gray-300 rounded-full px-4 py-2 bg-white shadow-sm hover:shadow-md transition" aria-label="Apri ricerca mobile">
+        <i data-lucide="search" class="w-4 h-4 text-dark" aria-hidden="true"></i>
+        <span class="text-sm font-semibold text-dark">Cerca</span>
+        <span class="text-sm text-medium">Brand, ref, anno…</span>
+      </button>
+
+      <!-- User Nav -->
+      <nav class="flex items-center gap-2" aria-label="Azioni utente">
+        <a href="#" class="text-sm font-semibold hover:bg-gray-50 px-4 py-2 rounded-full transition hidden sm:block text-dark">Vendi orologio</a>
+        <button class="p-2 hover:bg-gray-50 rounded-full transition" aria-label="Seleziona lingua">
+          <i data-lucide="globe" class="w-4 h-4 text-dark" aria-hidden="true"></i>
+        </button>
+
+        <button class="flex items-center gap-2 border border-gray-300 rounded-full p-1 pl-3 hover:shadow-md transition ml-1 cursor-pointer bg-white" aria-label="Apri menu account" type="button">
+          <i data-lucide="menu" class="w-4 h-4 text-dark" aria-hidden="true"></i>
+          <span class="bg-gray-500 text-white rounded-full p-1.5" aria-hidden="true">
+             <i data-lucide="user" class="w-4 h-4"></i>
+          </span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CATEGORIES BAR -->
+  <div class="fixed top-20 w-full bg-surface z-40 pt-4 pb-2 shadow-sm border-b border-gray-100" role="navigation" aria-label="Categorie">
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8">
+      <div class="flex gap-8 overflow-x-auto hide-scroll pb-2 items-center">
+        <button class="flex flex-col items-center gap-2 min-w-max border-b-2 border-black pb-2 opacity-100 transition" type="button" aria-current="page">
+          <i data-lucide="trending-up" class="w-6 h-6 text-dark" aria-hidden="true"></i>
+          <span class="text-xs font-semibold text-dark">Tendenze</span>
+        </button>
+
+        <button class="flex flex-col items-center gap-2 min-w-max border-b-2 border-transparent hover:border-gray-300 pb-2 opacity-60 hover:opacity-100 transition" type="button">
+          <i data-lucide="anchor" class="w-6 h-6" aria-hidden="true"></i>
+          <span class="text-xs font-medium">Diver</span>
+        </button>
+
+        <button class="flex flex-col items-center gap-2 min-w-max border-b-2 border-transparent hover:border-gray-300 pb-2 opacity-60 hover:opacity-100 transition" type="button">
+          <i data-lucide="watch" class="w-6 h-6" aria-hidden="true"></i>
+          <span class="text-xs font-medium">Cronografi</span>
+        </button>
+
+        <button class="flex flex-col items-center gap-2 min-w-max border-b-2 border-transparent hover:border-gray-300 pb-2 opacity-60 hover:opacity-100 transition" type="button">
+          <i data-lucide="award" class="w-6 h-6" aria-hidden="true"></i>
+          <span class="text-xs font-medium">Vintage</span>
+        </button>
+
+        <button class="flex flex-col items-center gap-2 min-w-max border-b-2 border-transparent hover:border-gray-300 pb-2 opacity-60 hover:opacity-100 transition" type="button">
+          <i data-lucide="gem" class="w-6 h-6" aria-hidden="true"></i>
+          <span class="text-xs font-medium">Alta Orologeria</span>
+        </button>
+
+        <button class="flex flex-col items-center gap-2 min-w-max border-b-2 border-transparent hover:border-gray-300 pb-2 opacity-60 hover:opacity-100 transition" type="button">
+          <i data-lucide="compass" class="w-6 h-6" aria-hidden="true"></i>
+          <span class="text-xs font-medium">Explorer</span>
+        </button>
+
+        <div class="ml-auto"></div>
+
+        <button type="button" class="hidden lg:inline-flex items-center gap-2 border border-gray-300 rounded-full px-4 py-2 bg-white hover:shadow-md transition" aria-label="Apri filtri">
+          <i data-lucide="sliders-horizontal" class="w-4 h-4 text-dark" aria-hidden="true"></i>
+          <span class="text-sm font-semibold text-dark">Filtri</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <main id="main" class="max-w-[1600px] mx-auto w-full px-4 md:px-8 pt-48 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-10" role="main">
+
+    <!-- LEFT: CONTENT & LISTINGS (8 Cols) -->
+    <section class="lg:col-span-8 flex flex-col gap-12" aria-label="Contenuti e listings">
+
+      <!-- Hero Banner -->
+      <section class="bg-dark text-white rounded-2xl p-8 md:p-10 shadow-lg relative overflow-hidden group">
+        <div class="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?q=80&w=1600&auto=format&fit=crop"
+            srcset="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?q=80&w=1200&auto=format&fit=crop 1200w, https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?q=80&w=1600&auto=format&fit=crop 1600w, https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?q=80&w=2000&auto=format&fit=crop 2000w"
+            sizes="100vw"
+            alt="Orologio di lusso in macro"
+            class="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-black/10"></div>
+        </div>
+
+        <div class="relative z-10 max-w-xl">
+          <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">Decodifica il valore del tempo.</h1>
+          <p class="text-base md:text-lg opacity-90 mb-8 font-light">Valutazioni istantanee, analisi di autenticità visiva e trend globali. Niente fuffa: numeri, segnali, contesto.</p>
+          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <button type="button" onclick="triggerPrompt('Analisi di mercato Rolex Submariner')" class="bg-white text-dark px-6 py-3 rounded-xl font-bold hover:shadow-lg transition">Analizza Mercato</button>
+            <button type="button" onclick="document.getElementById('uploadBtn').click()" class="bg-white/15 backdrop-blur-md text-white border border-white/30 px-6 py-3 rounded-xl font-semibold hover:bg-white/25 transition">Check Autenticità</button>
+          </div>
+          <p class="mt-4 text-xs opacity-80">*Stime indicative: il prezzo reale dipende da condizioni, full set, mercato locale e timing.*</p>
+        </div>
+      </section>
+
+      <!-- Featured Listings (Grid) -->
+      <section aria-label="In evidenza oggi">
+        <div class="flex items-center justify-between gap-4 mb-6">
+          <h2 class="text-2xl font-bold text-dark">In evidenza oggi</h2>
+          <a href="#" class="text-sm font-semibold underline text-dark hover:text-medium">Mostra tutto</a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+          <!-- Card 1 -->
+          <article class="group cursor-pointer" onclick="triggerPrompt('Dettagli mercato Rolex Daytona 116500LN')" aria-label="Rolex Daytona Hot Pick">
+            <div class="relative aspect-square bg-gray-100 rounded-xl overflow-hidden mb-3">
+              <img src="https://images.unsplash.com/photo-1639037340059-3382760a3d42?q=80&w=800&auto=format&fit=crop" alt="Rolex Daytona" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async">
+              <button type="button" class="absolute top-3 right-3 text-white" aria-label="Aggiungi ai preferiti">
+                <i data-lucide="heart" class="w-6 h-6 fill-black/40 stroke-white" aria-hidden="true"></i>
+              </button>
+              <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-xs font-bold text-dark shadow-sm">Hot Pick</div>
+            </div>
+            <div class="flex justify-between items-start">
+              <h3 class="font-bold text-dark group-hover:underline">Rolex Daytona</h3>
+              <div class="flex items-center gap-1 text-sm" aria-label="Valutazione 4.99 su 5">
+                <i data-lucide="star" class="w-3 h-3 fill-dark text-dark" aria-hidden="true"></i> 4.99
+              </div>
+            </div>
+            <p class="text-medium text-sm">Ref. 116500LN • Panda Dial</p>
+            <p class="text-medium text-sm">Disponibilità bassa</p>
+            <p class="mt-1 text-dark text-sm"><span class="font-bold">€28.500</span> stima mercato</p>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="group cursor-pointer" onclick="triggerPrompt('Analisi valore Omega Speedmaster 3861')" aria-label="Omega Speedmaster">
+            <div class="relative aspect-square bg-gray-100 rounded-xl overflow-hidden mb-3">
+              <img src="https://images.unsplash.com/photo-1622434641406-a158105c9168?q=80&w=800&auto=format&fit=crop" alt="Omega Speedmaster" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async">
+              <button type="button" class="absolute top-3 right-3 text-white" aria-label="Aggiungi ai preferiti">
+                <i data-lucide="heart" class="w-6 h-6 fill-black/40 stroke-white" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="flex justify-between items-start">
+              <h3 class="font-bold text-dark group-hover:underline">Omega Speedmaster</h3>
+              <div class="flex items-center gap-1 text-sm" aria-label="Valutazione 4.88 su 5">
+                <i data-lucide="star" class="w-3 h-3 fill-dark text-dark" aria-hidden="true"></i> 4.88
+              </div>
+            </div>
+            <p class="text-medium text-sm">Moonwatch 3861 Sapphire</p>
+            <p class="text-medium text-sm">Trend stabile</p>
+            <p class="mt-1 text-dark text-sm"><span class="font-bold">€7.400</span> stima mercato</p>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="group cursor-pointer" onclick="triggerPrompt('Previsione valore Cartier Santos Medium')" aria-label="Cartier Santos">
+            <div class="relative aspect-square bg-gray-100 rounded-xl overflow-hidden mb-3">
+              <img src="https://images.unsplash.com/photo-1596516109370-29001ec8ec36?q=80&w=800&auto=format&fit=crop" alt="Cartier Santos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async">
+              <button type="button" class="absolute top-3 right-3 text-white" aria-label="Aggiungi ai preferiti">
+                <i data-lucide="heart" class="w-6 h-6 fill-black/40 stroke-white" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="flex justify-between items-start">
+              <h3 class="font-bold text-dark group-hover:underline">Cartier Santos</h3>
+              <div class="flex items-center gap-1 text-sm" aria-label="Valutazione 4.95 su 5">
+                <i data-lucide="star" class="w-3 h-3 fill-dark text-dark" aria-hidden="true"></i> 4.95
+              </div>
+            </div>
+            <p class="text-medium text-sm">Medium Model • Acciaio</p>
+            <p class="text-medium text-sm">Alta richiesta</p>
+            <p class="mt-1 text-dark text-sm"><span class="font-bold">€6.800</span> stima mercato</p>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Editorial / News Feed -->
+      <section class="border-t border-gray-200 pt-10" aria-label="Market Intelligence">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold text-dark">Market Intelligence</h2>
+          <a href="#" class="text-sm font-semibold underline text-dark hover:text-medium">Vedi tutto</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <article class="flex gap-4 group cursor-pointer" onclick="triggerPrompt('Report: prezzi del secondario in calo')" aria-label="Report settimanale">
+            <div class="w-32 h-32 rounded-xl bg-gray-100 flex-shrink-0 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1548171915-e79a380a2a4b?q=80&w=300&auto=format&fit=crop" alt="Mercato orologi" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" loading="lazy" decoding="async">
+            </div>
+            <div class="flex flex-col justify-center">
+              <span class="text-[10px] font-bold uppercase text-medium tracking-wider mb-1">Report Settimanale</span>
+              <h3 class="font-bold text-lg leading-tight mb-2 group-hover:text-brand transition">Perché i prezzi del secondario stanno scendendo?</h3>
+              <p class="text-sm text-medium line-clamp-2">Analisi sulla correzione post-bolla e sulle opportunità di acquisto quando la hype fa un passo indietro.</p>
+            </div>
+          </article>
+
+          <article class="flex gap-4 group cursor-pointer" onclick="triggerPrompt('Guida: come riconoscere Omega Pre-Moon')" aria-label="Vintage Corner">
+            <div class="w-32 h-32 rounded-xl bg-gray-100 flex-shrink-0 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1619134778706-c7379761e271?q=80&w=300&auto=format&fit=crop" alt="Omega vintage" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" loading="lazy" decoding="async">
+            </div>
+            <div class="flex flex-col justify-center">
+              <span class="text-[10px] font-bold uppercase text-medium tracking-wider mb-1">Vintage Corner</span>
+              <h3 class="font-bold text-lg leading-tight mb-2 group-hover:text-brand transition">Guida all'acquisto: Omega Pre-Moon</h3>
+              <p class="text-sm text-medium line-clamp-2">Come leggere step dial, fondelli e dettagli originali nelle referenze più desiderate.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- RIGHT: CONCIERGE STICKY (4 Cols) -->
+    <aside class="lg:col-span-4 relative" aria-label="Concierge digitale">
+      <div class="lg:sticky lg:top-44">
+        <div class="bg-white rounded-2xl shadow-floating border border-gray-200 overflow-hidden flex flex-col h-[600px] lg:h-[calc(100vh-180px)]">
+
+          <!-- Chat Header -->
+          <div class="p-5 border-b border-gray-100 bg-white z-10 flex justify-between items-center">
+            <div>
+              <div class="text-xs font-bold text-brand uppercase tracking-wider mb-0.5">Concierge Digitale</div>
+              <h2 class="text-lg font-bold text-dark">Assistente Esperto</h2>
+            </div>
+            <button onclick="clearChat()" class="p-2 hover:bg-gray-100 rounded-full transition text-medium" aria-label="Cancella chat" type="button">
+              <i data-lucide="eraser" class="w-4 h-4" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <!-- Chat Body -->
+          <div id="chatArea" class="flex-grow p-5 overflow-y-auto chat-scroll bg-light space-y-4" aria-live="polite" aria-relevant="additions"></div>
+
+          <!-- Input Area -->
+          <div class="p-4 bg-white border-t border-gray-200" style="padding-bottom: calc(16px + env(safe-area-inset-bottom));">
+            <input type="file" id="imageInput" accept="image/*" class="hidden">
+            <form id="chatForm" class="flex flex-col gap-3" autocomplete="off">
+              <div class="relative">
+                <label class="sr-only" for="chatInput">Scrivi un messaggio</label>
+                <textarea id="chatInput" rows="1" placeholder="Scrivi o carica una foto…" aria-label="Messaggio"
+                  class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 pl-10 text-sm focus:bg-white focus:ring-1 focus:ring-dark focus:border-dark outline-none transition resize-none chat-scroll"></textarea>
+                <button type="button" id="uploadBtn" class="absolute left-2 top-2.5 p-1.5 text-medium hover:text-dark hover:bg-gray-200 rounded-lg transition" title="Carica foto per analisi" aria-label="Carica foto">
+                  <i data-lucide="camera" class="w-4 h-4" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-[10px] text-medium flex items-center gap-1"><i data-lucide="shield-check" class="w-3 h-3" aria-hidden="true"></i> Analisi protetta</span>
+                <button type="submit" id="sendBtn" class="bg-brand hover:bg-[#d90b3e] text-white px-6 py-2 rounded-lg text-sm font-bold transition shadow-sm disabled:opacity-50 disabled:cursor-not-allowed">Invia</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+        <div class="mt-4 text-center">
+          <p class="text-xs text-medium">Powered by Advanced Market Algorithms</p>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-50 border-t border-gray-200 mt-12 py-12" role="contentinfo">
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
+      <div>
+        <h3 class="font-bold text-dark mb-4">Assistenza</h3>
+        <ul class="space-y-3 text-medium">
+          <li><a href="#" class="hover:underline">Centro Assistenza</a></li>
+          <li><a href="#" class="hover:underline">Garanzia autenticità</a></li>
+          <li><a href="#" class="hover:underline">Opzioni di cancellazione</a></li>
+          <li><a href="#" class="hover:underline">Segnala un problema</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold text-dark mb-4">Community</h3>
+        <ul class="space-y-3 text-medium">
+          <li><a href="#" class="hover:underline">Orologi.news Magazine</a></li>
+          <li><a href="#" class="hover:underline">Forum Collezionisti</a></li>
+          <li><a href="#" class="hover:underline">Eventi e Aste</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold text-dark mb-4">Hosting</h3>
+        <ul class="space-y-3 text-medium">
+          <li><a href="#" class="hover:underline">Vendi il tuo orologio</a></li>
+          <li><a href="#" class="hover:underline">Diventa Dealer Certificato</a></li>
+          <li><a href="#" class="hover:underline">Risorse per venditori</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold text-dark mb-4">Orologi.news</h3>
+        <ul class="space-y-3 text-medium">
+          <li><a href="#" class="hover:underline">Newsroom</a></li>
+          <li><a href="#" class="hover:underline">Nuove funzionalità</a></li>
+          <li><a href="#" class="hover:underline">Lavora con noi</a></li>
+          <li><a href="#" class="hover:underline">Investitori</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="max-w-[1600px] mx-auto px-4 md:px-8 mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center text-xs text-medium">
+      <p>© 2025 Orologi.news, Inc. · Privacy · Termini · Mappa del sito</p>
+      <div class="flex gap-4 mt-4 md:mt-0 font-semibold text-dark">
+        <span>Italiano (IT)</span>
+        <span>€ EUR</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Avvio solo quando gli script defer (lucide/marked/purify) sono pronti
+    window.addEventListener('DOMContentLoaded', () => {
+      try { window.lucide?.createIcons(); } catch (_) {}
+
+      // --- CONFIG ---
+      const chatArea = document.getElementById('chatArea');
+      const chatInput = document.getElementById('chatInput');
+      const sendBtn = document.getElementById('sendBtn');
+      const uploadBtn = document.getElementById('uploadBtn');
+      const imageInput = document.getElementById('imageInput');
+      const chatForm = document.getElementById('chatForm');
+
+      // Markdown: evita HTML raw e sanitizza sempre
+      if (window.marked) {
+        marked.setOptions({
+          gfm: true,
+          breaks: true,
+          headerIds: false,
+          mangle: false
+        });
+      }
+
+      function scrollToBottom() { chatArea.scrollTop = chatArea.scrollHeight; }
+
+      function safeMarkdownToHtml(mdText) {
+        const raw = window.marked ? marked.parse(mdText) : mdText;
+        return window.DOMPurify ? DOMPurify.sanitize(raw, { USE_PROFILES: { html: true } }) : raw;
+      }
+
+      function appendMessage(text, sender, imageBase64 = null) {
+        const row = document.createElement('div');
+        row.className = `flex gap-3 animate-fade-in ${sender === 'user' ? 'flex-row-reverse' : ''}`;
+
+        let contentHtml = '';
+        if (imageBase64) {
+          contentHtml = `
+            <div class="relative rounded-lg overflow-hidden border border-gray-200 mb-1 bg-white">
+              <img src="${imageBase64}" alt="Foto caricata" class="max-w-[180px] w-full object-cover" loading="lazy" decoding="async" />
+            </div>
+          `;
+        } else if (sender === 'ai') {
+          contentHtml = safeMarkdownToHtml(text);
+        } else {
+          contentHtml = (text || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        const avatarIcon = sender === 'ai' ? 'sparkles' : 'user';
+        const avatarBg = sender === 'ai' ? 'bg-dark text-white' : 'bg-gray-200 text-medium';
+        const bubbleBg = sender === 'ai' ? 'bg-white border border-gray-200 text-dark' : 'bg-dark text-white';
+
+        row.innerHTML = `
+          <div class="w-8 h-8 rounded-full ${avatarBg} flex items-center justify-center flex-shrink-0 mt-1" aria-hidden="true">
+            <i data-lucide="${avatarIcon}" class="w-4 h-4"></i>
+          </div>
+          <div class="${bubbleBg} p-3.5 rounded-2xl text-sm shadow-sm prose prose-sm max-w-[85%] ${sender === 'user' ? 'rounded-tr-none prose-invert' : 'rounded-tl-none'}">
+            ${contentHtml}
+          </div>
+        `;
+
+        chatArea.appendChild(row);
+        try { window.lucide?.createIcons(); } catch (_) {}
+        scrollToBottom();
+      }
+
+      function showTyping() {
+        const row = document.createElement('div');
+        row.id = 'typing';
+        row.className = 'flex gap-3 animate-fade-in';
+        row.innerHTML = `
+          <div class="w-8 h-8 rounded-full bg-dark text-white flex items-center justify-center flex-shrink-0 mt-1" aria-hidden="true">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+          </div>
+          <div class="bg-white border border-gray-200 p-4 rounded-2xl rounded-tl-none flex gap-2 shadow-sm h-12 items-center" aria-label="Sta scrivendo">
+            <span class="dot d1"></span>
+            <span class="dot d2"></span>
+            <span class="dot d3"></span>
+          </div>
+        `;
+        chatArea.appendChild(row);
+        try { window.lucide?.createIcons(); } catch (_) {}
+        scrollToBottom();
+      }
+
+      function renderIntro() {
+        chatArea.innerHTML = '';
+        const intro = document.createElement('div');
+        intro.className = 'flex gap-3 animate-fade-in';
+        intro.innerHTML = `
+          <div class="w-8 h-8 rounded-full bg-dark text-white flex items-center justify-center flex-shrink-0 mt-1" aria-hidden="true">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+          </div>
+          <div class="flex flex-col gap-2 max-w-[85%]">
+            <div class="bg-white border border-gray-200 p-4 rounded-2xl rounded-tl-none text-sm text-dark shadow-sm">
+              <p class="font-semibold mb-1">Benvenuto su Orologi.news.</p>
+              <p>Sono il tuo esperto digitale. Posso stimare valori, spiegare trend o fare un primo check visivo da foto.</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" class="text-xs bg-white border border-gray-200 px-3 py-1.5 rounded-full hover:bg-gray-50 transition shadow-sm" data-prompt="Dammi una stima per un Rolex Datejust 36mm usato">Quotazione Datejust</button>
+              <button type="button" class="text-xs bg-white border border-gray-200 px-3 py-1.5 rounded-full hover:bg-gray-50 transition shadow-sm" data-prompt="Come distinguere un falso Speedmaster?">Check Falsi</button>
+              <button type="button" class="text-xs bg-white border border-gray-200 px-3 py-1.5 rounded-full hover:bg-gray-50 transition shadow-sm" data-prompt="Quali modelli hanno tenuto meglio il valore nel 2024-2025?">Trend & Invest</button>
+            </div>
+          </div>
+        `;
+        chatArea.appendChild(intro);
+        try { window.lucide?.createIcons(); } catch (_) {}
+        scrollToBottom();
+      }
+
+      // --- API HANDLER (Proxy Pattern) ---
+      async function callBackend(text, imageBase64) {
+        try {
+          const res = await fetch('/api/analyze', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text, image: imageBase64 })
+          });
+
+          if (!res.ok) throw new Error('Backend non disponibile');
+          const data = await res.json();
+          return data.result;
+
+        } catch (error) {
+          console.warn('Backend non raggiungibile, uso simulatore locale.');
+          return simulateExpertResponse(text, imageBase64);
+        }
+      }
+
+      function simulateExpertResponse(text, img) {
+        if (img) {
+          return "Ho analizzato l'immagine: il layout sembra coerente con un modello **sportivo** (controllo preliminare).\n\n**Checklist rapida:**\n- Tipografia e spaziatura (ok/da verificare con macro)\n- Rehaut / incisioni (serve close-up)\n- Allineamento indici (serve foto frontale perfetta)\n\n**Stima (indicativa):** €11.500 – €12.800 (dipende da full set e condizioni).";
+        }
+
+        const t = (text || '').toLowerCase();
+        if (t.includes('rolex') || t.includes('daytona')) {
+          return "Il **Rolex Daytona 116500LN** gira spesso intorno ai **€28.500** (range variabile per condizioni e set).\n\n**Market take:** stabilizzazione dopo la fase iper-speculativa; oggi conta più la qualità dell'esemplare che l'hype.";
+        }
+        if (t.includes('investimento')) {
+          return "**Investment-grade (con buon senso):**\n\n1. **Omega Speedmaster 321** (produzione limitata)\n2. **Cartier Crash** (domanda alta, offerta bassa)\n3. **Rolex neo-vintage** (anni '90, ref. 5 cifre)\n\nKPI: *Full set*, condizioni, service documentato.";
+        }
+        if (t.includes('falso') || t.includes('fake')) {
+          return "**Protocollo anti-fake (visivo):**\n- Incisione laser sul vetro a ore 6 (nitida, non 'sgranata')\n- Rehaut: centratura e profondità\n- Stampa: micro-testi puliti, niente sbavature\n\nCarica una foto macro (quadrante + rehaut) e faccio un primo screening.";
+        }
+
+        return "Ricevuto. Dimmi **marca + referenza + anno + condizioni** (e se è *full set*) e ti preparo una stima con contesto di mercato.";
+      }
+
+      // --- EVENT HANDLERS ---
+      async function handleSend(txt = null, img = null) {
+        const text = (txt ?? chatInput.value).trim();
+        if (!text && !img) return;
+
+        chatInput.value = '';
+        chatInput.style.height = 'auto';
+
+        appendMessage(text, 'user', img);
+        sendBtn.disabled = true;
+
+        showTyping();
+
+        try {
+          await new Promise(r => setTimeout(r, img ? 1100 : 700));
+          const response = await callBackend(text || 'Analisi richiesta', img);
+          document.getElementById('typing')?.remove();
+          appendMessage(response, 'ai');
+        } catch (err) {
+          document.getElementById('typing')?.remove();
+          appendMessage('Ops: qualcosa è andato storto. Riprova tra poco.', 'ai');
+        } finally {
+          sendBtn.disabled = false;
+        }
+      }
+
+      // Bindings
+      uploadBtn.addEventListener('click', () => imageInput.click());
+
+      async function compressImageToDataUrl(file, maxDim = 1280, quality = 0.85) {
+        // Riduce peso e dimensioni per evitare limiti di payload/timeouts in Vercel e Gemini.
+        // Output: JPEG base64 (data URL)
+        const bitmap = await (window.createImageBitmap ? createImageBitmap(file) : new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => resolve(img);
+          img.onerror = reject;
+          const r = new FileReader();
+          r.onload = () => { img.src = r.result; };
+          r.onerror = reject;
+          r.readAsDataURL(file);
+        }));
+
+        const w = bitmap.width || bitmap.naturalWidth;
+        const h = bitmap.height || bitmap.naturalHeight;
+        const scale = Math.min(1, maxDim / Math.max(w, h));
+        const outW = Math.max(1, Math.round(w * scale));
+        const outH = Math.max(1, Math.round(h * scale));
+
+        const canvas = document.createElement('canvas');
+        canvas.width = outW;
+        canvas.height = outH;
+        const ctx = canvas.getContext('2d', { alpha: false });
+        ctx.drawImage(bitmap, 0, 0, outW, outH);
+
+        return canvas.toDataURL('image/jpeg', quality);
+      }
+
+      imageInput.addEventListener('change', async (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        try {
+          const dataUrl = await compressImageToDataUrl(file);
+          await handleSend('', dataUrl);
+        } catch (err) {
+          console.warn('Compressione immagine fallita, uso original:', err);
+          const reader = new FileReader();
+          reader.onload = (ev) => handleSend('', ev.target.result);
+          reader.readAsDataURL(file);
+        } finally {
+          e.target.value = '';
+        }
+      });
+
+      chatForm.addEventListener('submit', (e) => { e.preventDefault(); handleSend(); });
+
+      chatInput.addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = Math.min(this.scrollHeight, 180) + 'px';
+      });
+
+      chatInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          handleSend();
+        }
+      });
+
+      // Quick prompts (delegation)
+      chatArea.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-prompt]');
+        if (!btn) return;
+        handleSend(btn.getAttribute('data-prompt'));
+      });
+
+      // Expose minimal API
+      window.triggerPrompt = (t) => handleSend(t);
+      window.clearChat = () => { renderIntro(); };
+
+      // Init
+      renderIntro();
+    });
+  </script>
+</body>
+</html>
